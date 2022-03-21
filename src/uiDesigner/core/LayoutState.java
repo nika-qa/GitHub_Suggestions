@@ -3,7 +3,9 @@ package uiDesigner.core;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.util.ArrayList;
-
+/*
+    TODO javadoc
+ */
 public final class LayoutState {
     private final Component[] myComponents;
     private final GridConstraints[] myConstraints;

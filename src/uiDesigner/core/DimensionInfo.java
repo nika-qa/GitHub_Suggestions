@@ -43,8 +43,8 @@ public abstract class DimensionInfo {
             Util.eliminate((int[])((int[])this.myCell.clone()), this.mySpansAfterElimination, elimitated);
             this.myCellSizePolicies = new int[this.getCellCount()];
 
-            for(int i = 0; i < this.myCellSizePolicies.length; ++i) {
-                this.myCellSizePolicies[i] = this.getCellSizePolicyImpl(i, elimitated);
+            for(int j = 0; j < this.myCellSizePolicies.length; ++j) {
+                this.myCellSizePolicies[j] = this.getCellSizePolicyImpl(j, elimitated);
             }
 
         }
@@ -63,10 +63,6 @@ public abstract class DimensionInfo {
     }
 
     public abstract int getCellCount();
-
-    public abstract int getPreferredWidth(int var1);
-
-    public abstract int getMinimumWidth(int var1);
 
     public abstract DimensionInfo getDimensionInfo(GridLayoutManager var1);
 
@@ -93,6 +89,8 @@ public abstract class DimensionInfo {
     public final int getGap() {
         return this.myGap;
     }
+
+    public abstract int getMinimumWidth(int var1);
 
     public boolean componentBelongsCell(int componentIndex, int cellIndex) {
         int componentStartCell = this.getCell(componentIndex);

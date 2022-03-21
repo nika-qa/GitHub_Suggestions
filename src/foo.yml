@@ -3,7 +3,7 @@ invoice: 34843
 date   : 2001-01-23
 bill-to: &id001
     given  : Chris
-    family : Dumars
+    family : Doe
     address:
         lines: |
             458 Walkman Dr.
@@ -26,4 +26,4 @@ total: 4443.52
 comments: >
     Late afternoon is best.
     Backup contact is Nancy
-    Billsmer @ 338-4338.
+    Bilsmer @ 338-4338.

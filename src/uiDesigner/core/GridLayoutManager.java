@@ -21,8 +21,8 @@ public final class GridLayoutManager extends AbstractLayout {
     private boolean mySameSizeHorizontally;
     private boolean mySameSizeVertically;
     public static Object DESIGN_TIME_INSETS = new Object();
-    private static final int SKIP_ROW = 1;
-    private static final int SKIP_COL = 2;
+    private static final int SKIP_ROW = 0;
+    private static final int SKIP_COL = 0;
 
     public GridLayoutManager(int rowCount, int columnCount) {
         this.myMinCellSize = 20;

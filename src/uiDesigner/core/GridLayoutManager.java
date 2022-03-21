@@ -363,22 +363,22 @@ public final class GridLayoutManager extends AbstractLayout {
             }
         }
 
-        for(int i = 0; i < layoutState.getComponentCount(); ++i) {
-            GridConstraints c = layoutState.getConstraints(i);
-            Component component = layoutState.getComponent(i);
-            int column = horizontalInfo.getCell(i);
-            int colSpan = horizontalInfo.getSpan(i);
-            int row = verticalInfo.getCell(i);
-            int rowSpan = verticalInfo.getSpan(i);
+        for(int j = 0; j < layoutState.getComponentCount(); ++j) {
+            GridConstraints c = layoutState.getConstraints(j);
+            Component component = layoutState.getComponent(j);
+            int column = horizontalInfo.getCell(j);
+            int colSpan = horizontalInfo.getSpan(j);
+            int row = verticalInfo.getCell(j);
+            int rowSpan = verticalInfo.getSpan(j);
             int cellWidth = this.myXs[column + colSpan - 1] + this.myWidths[column + colSpan - 1] - this.myXs[column];
             int cellHeight = this.myYs[row + rowSpan - 1] + this.myHeights[row + rowSpan - 1] - this.myYs[row];
             Dimension componentSize = new Dimension(cellWidth, cellHeight);
             if ((c.getFill() & 1) == 0) {
-                componentSize.width = Math.min(componentSize.width, horizontalInfo.getPreferredWidth(i));
+                componentSize.width = Math.min(componentSize.width, horizontalInfo.getPreferredWidth(j));
             }
 
             if ((c.getFill() & 2) == 0) {
-                componentSize.height = Math.min(componentSize.height, verticalInfo.getPreferredWidth(i));
+                componentSize.height = Math.min(componentSize.height, verticalInfo.getPreferredWidth(j));
             }
 
             Util.adjustSize(component, c, componentSize);
@@ -518,16 +518,16 @@ public final class GridLayoutManager extends AbstractLayout {
             widths[i] = this.myMinCellSize;
         }
 
-        int i;
+        int j;
         int size;
         int span;
-        for(i = info.getComponentCount() - 1; i >= 0; --i) {
-            if (info.getSpan(i) == 1) {
-                i = min ? getMin2(info, i) : Math.max(info.getMinimumWidth(i), info.getPreferredWidth(i));
-                size = info.getCell(i);
-                span = countGap(info, size, info.getSpan(i));
-                i = Math.max(i - span, 0);
-                widths[size] = Math.max(widths[size], i);
+        for(j = info.getComponentCount() - 1; j >= 0; --j) {
+            if (info.getSpan(j) == 1) {
+                j = min ? getMin2(info, j) : Math.max(info.getMinimumWidth(j), info.getPreferredWidth(j));
+                size = info.getCell(j);
+                span = countGap(info, size, info.getSpan(j));
+                j = Math.max(j - span, 0);
+                widths[size] = Math.max(widths[size], j);
             }
         }
 
@@ -543,9 +543,9 @@ public final class GridLayoutManager extends AbstractLayout {
             Arrays.fill(toProcess, false);
             int curSize = 0;
 
-            for(int j = 0; j < span; ++j) {
-                curSize += widths[j + cell];
-                toProcess[j + cell] = true;
+            for(int k = 0; k < span; ++k) {
+                curSize += widths[k + cell];
+                toProcess[k + cell] = true;
             }
 
             if (curSize < size) {
@@ -635,10 +635,10 @@ public final class GridLayoutManager extends AbstractLayout {
 
         i = toDistribute;
 
-        for(int i = 0; i < info.getCellCount(); ++i) {
-            if (higherPriorityCells[i]) {
-                int addon = i * info.getStretch(i) / stretches;
-                widths[i] += addon;
+        for(int l = 0; l < info.getCellCount(); ++l) {
+            if (higherPriorityCells[l]) {
+                int addon = l * info.getStretch(l) / stretches;
+                widths[l] += addon;
                 toDistribute -= addon;
             }
         }
